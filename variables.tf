@@ -80,7 +80,17 @@ variable "db_password" {
   default     = "admin123"
 }
 
-variable "security_group_id" {
+variable "rds_security_group_id" {
   description = "Security Group ID for RDS Instance"
-  default     = module.vpc.security_group_id
+  default     = module.security_groups.private_subnet_sg_id
+}
+
+variable "public_instance_sg_id" {
+ default = var.public_instance_sg_id
+
+}
+
+variable "private_subnet_sg_id" {
+ default = var.private_subnet_sg_id
+
 }

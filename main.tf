@@ -12,6 +12,12 @@ module "vpc" {
   availability_zones   = var.availability_zones
 }
 
+module "security_groups" {
+  source = "./security_groups"
+  public_instance_sg_id = var.public_instance_sg_id
+  private_subnet_sg_id = var.private_subnet_sg_id
+}
+
 module "ec2" {
   source        = "./modules/ec2"
   aws_region           = var.aws_region
@@ -31,5 +37,5 @@ module "rds" {
   db_name             = var.db_name
   db_username         = var.db_username
   db_password         = var.db_password
-  security_group_id   = module.vpc.security_group_id
+  rds_security_group_id   = module.security_groups.private_subnet_sg_id
 }

@@ -11,15 +11,27 @@ resource "aws_vpc" "main" {
   }
 }
 
+# Subnet Pública
 resource "aws_subnet" "public" {
-  count = var.subnet_count
-
-  vpc_id                  = aws_vpc.main.id
-  cidr_block              = element(var.subnet_cidr_blocks, count.index)
-  availability_zone       = element(var.availability_zones, count.index)
+  count                  = var.subnet_count
+  vpc_id                 = aws_vpc.main.id
+  cidr_block             = element(var.subnet_cidr_blocks, count.index)
+  availability_zone      = element(var.availability_zones, count.index)
   map_public_ip_on_launch = count.index == 0 ? true : false
   tags = {
     Name = "${var.vpc_name}-public-${count.index + 1}"
+  }
+}
+
+# Subnet Privada
+resource "aws_subnet" "private" {
+  count                  = var.subnet_count
+  vpc_id                 = aws_vpc.main.id
+  cidr_block             = element(var.subnet_cidr_blocks, count.index + var.subnet_count) # Adicionando var.subnet_count para garantir que seja uma faixa de CIDR diferente
+  availability_zone      = element(var.availability_zones, count.index)
+  map_public_ip_on_launch = false # Configurando para false, já que é uma subnet privada
+  tags = {
+    Name = "${var.vpc_name}-private-${count.index + 1}"
   }
 }
 
@@ -27,6 +39,11 @@ output "vpc_id" {
   value = aws_vpc.main.id
 }
 
-output "public_subnet_ids" {
-  value = aws_subnet.public[*].id
+# Outputs
+output "public_subnet_id" {
+  value = aws_subnet.public[0].id
+}
+
+output "private_subnet_id" {
+  value = aws_subnet.private[0].id
 }

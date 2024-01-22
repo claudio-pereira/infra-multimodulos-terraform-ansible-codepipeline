@@ -38,7 +38,12 @@ variable "db_password" {
   description = "Senha do banco de dados RDS"
 }
 
-variable "security_group_id" {
+variable "subnet_id" {
+  type        = list(string)
+  description = "IDs das Subnets"
+}
+
+variable "rds_security_group_id" {
   type        = string
   description = "ID do grupo de segurança VPC associado à instância RDS"
 }

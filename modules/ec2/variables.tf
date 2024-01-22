@@ -13,7 +13,7 @@ variable "instance_type" {
   description = "Tipo da instância EC2"
 }
 
-variable "subnet_ids" {
+variable "subnet_id" {
   type        = list(string)
   description = "IDs das Subnets"
 }

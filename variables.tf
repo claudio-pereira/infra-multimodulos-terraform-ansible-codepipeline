@@ -85,6 +85,11 @@ variable "rds_security_group_id" {
   default     = module.security_groups.private_subnet_sg_id
 }
 
+variable "ec2_security_group_id" {
+  description = "Security Group ID for ec2 Instance"
+  default     = module.security_groups.public_subnet_sg_id
+}
+
 variable "public_instance_sg_id" {
  default = var.public_instance_sg_id
 

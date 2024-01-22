@@ -13,7 +13,7 @@ variable "instance_type" {
   description = "Tipo da instância EC2"
 }
 
-variable "subnet_id" {
+variable "subnet_ids" {
   type        = list(string)
   description = "IDs das Subnets"
 }
@@ -21,4 +21,9 @@ variable "subnet_id" {
 variable "key_name" {
   type        = string
   description = "Nome da chave SSH para acesso à instância"
+}
+
+variable "ec2_security_group_id" {
+  type        = string
+  description = "ID do grupo de segurança VPC associado à instância EC2"
 }

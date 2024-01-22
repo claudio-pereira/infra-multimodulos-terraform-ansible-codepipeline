@@ -25,6 +25,7 @@ module "ec2" {
   instance_type = var.instance_type
   key_name      = var.key_name
   subnet_ids    = module.vpc.public_subnet_ids
+  ec2_security_group_id   = module.security_groups.public_subnet_sg_id
 }
 
 module "rds" {
@@ -37,5 +38,6 @@ module "rds" {
   db_name             = var.db_name
   db_username         = var.db_username
   db_password         = var.db_password
+  subnet_id    = module.vpc.private_subnet_sg_ids
   rds_security_group_id   = module.security_groups.private_subnet_sg_id
 }

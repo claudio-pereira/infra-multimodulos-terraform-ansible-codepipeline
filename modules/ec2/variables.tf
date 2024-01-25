@@ -23,7 +23,7 @@ variable "key_name" {
   description = "Nome da chave SSH para acesso à instância"
 }
 
-variable "ec2_security_group_id" {
+variable "security_group_ids" {
   type        = string
-  description = "ID do grupo de segurança VPC associado à instância EC2"
+  description = "security_group"
 }

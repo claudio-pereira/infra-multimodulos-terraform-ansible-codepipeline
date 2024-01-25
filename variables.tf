@@ -80,22 +80,27 @@ variable "db_password" {
   default     = "admin123"
 }
 
-variable "rds_security_group_id" {
-  description = "Security Group ID for RDS Instance"
-  default     = module.security_groups.private_subnet_sg_id
+variable "public_instance_sg" {
+  description = "public_instance_sg"
+  default     = "aws_security_group.public_instance_sg"
 }
 
-variable "ec2_security_group_id" {
-  description = "Security Group ID for ec2 Instance"
-  default     = module.security_groups.public_subnet_sg_id
+variable "private_subnet_sg" {
+  description = "public_instance_sg"
+  default     = "aws_security_group.private_instance_sg"
 }
 
 variable "public_instance_sg_id" {
- default = var.public_instance_sg_id
-
+  description = "public_instance_sg_id"
+  default     = "aws_security_group.public_instance_sg.id"
 }
 
 variable "private_subnet_sg_id" {
- default = var.private_subnet_sg_id
-
+  description = "public_instance_sg_id"
+  default     = "aws_security_group.private_instance_sg.id"
 }
+
+# variable "private_cidr_blocks" {
+#   description = "private_cidr_block"
+#   default     = "module.vpc.aws_subnet.private[0].cidr_block"
+# }

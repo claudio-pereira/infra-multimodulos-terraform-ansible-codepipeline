@@ -43,7 +43,7 @@ variable "subnet_id" {
   description = "IDs das Subnets"
 }
 
-variable "rds_security_group_id" {
+variable "security_group_ids" {
   type        = string
-  description = "ID do grupo de segurança VPC associado à instância RDS"
+  description = "security_group"
 }

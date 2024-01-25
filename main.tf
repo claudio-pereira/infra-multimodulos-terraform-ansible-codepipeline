@@ -24,7 +24,8 @@ module "security_groups" {
   aws_region    = var.aws_region
   public_instance_sg_id = var.public_instance_sg_id
   private_subnet_sg_id = var.private_subnet_sg_id
-  private_cidr_block = module.vpc.private_cidr_blocks
+  private_cidr_block = [module.vpc.private_cidr_blocks[0]]
+  vpc_id                 = module.vpc.vpc_id
 }
 
 module "ec2" {
@@ -33,9 +34,10 @@ module "ec2" {
   ami           = var.ami
   instance_type = var.instance_type
   key_name      = var.key_name
-  security_group_ids = module.security_groups.public_instance_sg_id
+  security_group_ids = [module.security_groups.public_instance_sg_id]
   subnet_ids    = [module.vpc.public_subnet_ids]
-}
+  vpc_id                 = module.vpc.vpc_id
+ }
 
 module "rds" {
   source                 = "./modules/rds"
@@ -47,6 +49,7 @@ module "rds" {
   db_name                = var.db_name
   db_username            = var.db_username
   db_password            = var.db_password
-  security_group_ids = module.security_groups.private_subnet_sg_id
-  subnet_id              = [module.vpc.private_subnet_ids]
+  security_group_ids = [module.security_groups.private_subnet_sg_id]
+  subnet_id              = module.vpc.private_subnet_ids
+  
 }

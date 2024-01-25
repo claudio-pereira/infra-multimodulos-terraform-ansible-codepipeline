@@ -14,6 +14,11 @@ variable "private_subnet_sg_id" {
 }
 
 variable "private_cidr_block" {
-  type        = string
+  type        = list(string)
   description = "bloco cidr privado"  
+}
+
+variable "vpc_id" {
+   type = string
+    description = "Id da VPC"
 }

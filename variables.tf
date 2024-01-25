@@ -72,12 +72,12 @@ variable "db_name" {
 
 variable "db_username" {
   description = "Username for the Database"
-  default     = "admin"
+  
 }
 
 variable "db_password" {
   description = "Password for the Database"
-  default     = "admin123"
+  
 }
 
 variable "public_instance_sg" {
@@ -104,3 +104,7 @@ variable "private_subnet_sg_id" {
 #   description = "private_cidr_block"
 #   default     = "module.vpc.aws_subnet.private[0].cidr_block"
 # }
+variable "vpc_id" {
+    description = "Id da VPC"
+    default = "aws_vpc.main.id"
+}

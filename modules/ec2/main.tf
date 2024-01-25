@@ -10,10 +10,11 @@ resource "aws_key_pair" "key" {
 resource "aws_instance" "ec2_instance" {
   ami           = var.ami
   instance_type = var.instance_type
-  vpc_security_group_ids = [var.security_group_ids]
+  vpc_security_group_ids = [var.security_group_ids[0]]
   key_name      = aws_key_pair.key.key_name
 
   tags = {
     Name = "EC2 Instance"
   }
+  
 }

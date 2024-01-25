@@ -13,7 +13,7 @@ resource "aws_vpc" "main" {
 
 # Subnet Pública
 resource "aws_subnet" "public" {
-  count                  = var.subnet_count
+  count                  = 1
   vpc_id                 = aws_vpc.main.id
   cidr_block             = element(var.subnet_cidr_blocks, count.index)
   availability_zone      = element(var.availability_zones, count.index)

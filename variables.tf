@@ -86,8 +86,8 @@ variable "public_instance_sg" {
 }
 
 variable "private_subnet_sg" {
-  description = "public_instance_sg"
-  default     = "aws_security_group.private_instance_sg"
+  description = "private_instance_sg"
+  default     = "aws_security_group.private_subnet_sg"
 }
 
 variable "public_instance_sg_id" {
@@ -96,8 +96,8 @@ variable "public_instance_sg_id" {
 }
 
 variable "private_subnet_sg_id" {
-  description = "public_instance_sg_id"
-  default     = "aws_security_group.private_instance_sg.id"
+  description = "private_instance_sg_id"
+  default     = "aws_security_group.private_subnet_sg.id"
 }
 
 # variable "private_cidr_blocks" {

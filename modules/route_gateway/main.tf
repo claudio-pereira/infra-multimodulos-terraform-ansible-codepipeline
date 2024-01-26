@@ -17,6 +17,6 @@ resource "aws_route" "internet" {
 }
 
 resource "aws_route_table_association" "subnet_association" {
-  subnet_id      = var.subnet_id
+  subnet_id      = var.subnet_id[0]
   route_table_id = aws_route_table.main.id
 }

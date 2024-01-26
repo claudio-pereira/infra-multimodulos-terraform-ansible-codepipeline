@@ -9,6 +9,6 @@ variable "vpc_id" {
 }
 
 variable "subnet_id" {
-  type        = string
-  description = "ID da Subnet"
+  type        = list(string)
+  description = "ID da Subnet Pública"
 }

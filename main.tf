@@ -19,6 +19,13 @@ module "vpc" {
   availability_zones = var.availability_zones
 }
 
+module "route_gateway" {
+  source                = "./modules/route_gateway"
+  aws_region            = var.aws_region
+  vpc_id                = module.vpc.vpc_id
+  subnet_id             = module.vpc.public_subnet_ids  # Use a primeira subnet pública
+}
+
 module "security_groups" {
   source              = "./modules/security_groups"
   aws_region    = var.aws_region

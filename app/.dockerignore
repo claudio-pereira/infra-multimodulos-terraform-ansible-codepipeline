@@ -1,0 +1,6 @@
+*env*
+/services/__pycache__/
+.gitignore
+bin/
+include/
+lib/

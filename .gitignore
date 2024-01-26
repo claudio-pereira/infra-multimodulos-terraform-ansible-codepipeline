@@ -78,3 +78,16 @@ include/
 lib/
 *.cfg
 *-log
+
+# Arquivos e diretórios específicos do Ansible
+*.retry
+*.log
+*.pid
+*.ini
+
+# Diretórios específicos do Python (caso você use módulos Python)
+__pycache__/
+*.pyc
+
+# Variáveis sensíveis e arquivos de senhas (utilize Ansible Vault)
+vars/secrets.yml

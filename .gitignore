@@ -39,3 +39,42 @@ terraform.rc
 *.pub*
 #Arquivo .out
 plan*.out
+
+# Arquivos gerados pelo Python
+__pycache__/
+
+# Arquivos de byte compilado
+*.pyc
+*.pyo
+*.pyd
+
+# Ambiente virtual
+venv/
+env/
+*.env
+
+# Arquivo de configuração do ambiente (por exemplo, .env)
+.env
+
+# Logs e arquivos temporários
+*.log
+*.pot
+*.po
+*.mo
+*.tmp
+
+# Arquivos de configuração específicos para editores
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Outros
+.DS_Store
+Thumbs.db
+# Arquivos do Python
+bin/
+include/
+lib/
+*.cfg
+*-log

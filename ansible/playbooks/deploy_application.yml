@@ -1,0 +1,23 @@
+---
+- name: Deploy Docker Application
+  hosts: all
+  become: true
+
+  tasks:
+    - name: Transfer Docker image to instance
+      copy:
+        src: ~/apicalc.tar
+        dest: ~/apicalc.tar
+
+    - name: Load Docker image
+      docker_image:
+        name: apicalc:1.0
+        load_path: ~/apicalc.tar
+
+    - name: Run Docker container
+      docker_container:
+        name: apicalc_container
+        image: apicalc:1.0
+        ports:
+          - "80:8000"  # Ajuste conforme necessário
+        detach: yes

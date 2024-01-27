@@ -1,0 +1,17 @@
+# install_docker_module.yml
+---
+- name: Install Docker module for Ansible
+  hosts: all
+  become: true
+  gather_facts: true
+
+  tasks:
+    - name: Install pip
+      apt:
+        name: python3-pip
+        state: present
+
+    - name: Install Docker module
+      pip:
+        name: docker
+        executable: pip3

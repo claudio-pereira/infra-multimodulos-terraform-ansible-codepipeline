@@ -1,0 +1,5 @@
+---
+- name: Update Instance
+  apt:
+    upgrade: safe
+    update_cache: yes
